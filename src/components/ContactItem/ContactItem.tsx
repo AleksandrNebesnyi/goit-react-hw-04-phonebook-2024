@@ -1,6 +1,13 @@
 import css from './ContactItem.module.css';
+// Интерфейс для пропсов
+interface IProps {
+  id: string;
+  name: string;
+  number: string;
+  deleteContact: (id: string) => void;
+};
 
-export const ContactItem = ({ id, name, number, deleteContact }) => {
+export const ContactItem = ({ id, name, number, deleteContact }: IProps) => {
   return (
     <li className={css.listItem}>
       <p className={css.itemText}>
@@ -9,7 +16,7 @@ export const ContactItem = ({ id, name, number, deleteContact }) => {
 
       <button
         type="button"
-        className={css.itemButton}
+        className="btn btn-outline-primary"
         onClick={() => deleteContact(id)}
       >
         Delete

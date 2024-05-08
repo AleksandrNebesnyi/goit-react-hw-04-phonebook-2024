@@ -2,7 +2,7 @@ import { useState } from 'react';
 import css from './ContactForm.module.css';
 import { nanoid } from 'nanoid';
 
-export const ContactForm = ({submit}) => {
+export const ContactForm = ({ submit }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -15,18 +15,18 @@ export const ContactForm = ({submit}) => {
       case 'name':
         setName(e.currentTarget.value);
         break;
-        case 'number':
+      case 'number':
         setNumber(e.currentTarget.value);
         break;
-    
+
       default:
         break;
-    }   
+    }
   };
-  
+
   const handleSubmit = e => {
     e.preventDefault();
-    submit({name,number});
+    submit({ name, number });
     resetForm();
   };
   const resetForm = () => {
@@ -35,37 +35,38 @@ export const ContactForm = ({submit}) => {
   };
   return (
     <form className={css.form} onSubmit={handleSubmit}>
-      <label htmlFor={nameInputId}>
+      <div class="col-md-11">
         <input
           id={nameInputId}
-          className={css.input}
-          onChange={handleChange}
+          class="form-control form-control-lg  mb-4 "
           type="text"
+          placeholder=" Enter Name"
+          aria-label=".form-control-lg example"
           name="name"
           value={name}
           required
-          placeholder="Enter Name"
-          autoComplete="on"
-        />
-      </label>
-
-      <label htmlFor={numberInputId}>
+          onChange={handleChange}
+        ></input>
+      </div>
+      <div class="col-md-11">
         <input
           id={numberInputId}
-          className={css.input}
-          onChange={handleChange}
+          class="form-control form-control-lg  mb-4 "
           type="tel"
+          placeholder=" Enter Phone"
+          aria-label=".form-control-lg example"
           name="number"
           value={number}
           required
-          placeholder="Enter Phone"
-          autoComplete="on"
-        />
-      </label>
-
-      <button type="submit" className={css.button}>
+          onChange={handleChange}
+        ></input>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg">
         addContact
       </button>
+      {/* <button type="submit" className={css.button}>
+        addContact
+      </button> */}
     </form>
   );
 };
