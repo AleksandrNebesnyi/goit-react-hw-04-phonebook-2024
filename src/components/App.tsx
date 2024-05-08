@@ -21,7 +21,9 @@ export const App = () => {
   const CONTACT_STORAGE_KEY: string = 'contacts';
   // Используем ленивую инициализацию для получения данных из localStorage.
 
-  const getInitialContacts= ()=>{
+  // Тип для функции
+type typeGetInitialContacts = () => IContact[];
+  const getInitialContacts:typeGetInitialContacts= ()=>{
     const savedContacts=window.localStorage.getItem(CONTACT_STORAGE_KEY);
     return savedContacts ? JSON.parse(savedContacts) : initialContacts;
   }
